@@ -1,5 +1,6 @@
 package sort;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Evaluate {
@@ -13,9 +14,9 @@ public class Evaluate {
         }
     }
 
-    public static App getHighestRating(List<App> apps) {
+    public static List<App> getHighestRating(List<App> apps) {
 
-        double idx = 0;
+        double idx = Double.MIN_VALUE;
         App highest = new App();
 
         for (App app : apps) {
@@ -27,12 +28,19 @@ public class Evaluate {
             }
         }
 
-        return highest;
+        List<App> highs = new ArrayList<>();
+        for (App app : apps) {
+            if (app.getRating().equals(highest.getRating())) {
+                highs.add(app);
+            }
+        }
+
+        return highs;
     }
 
-    public static App getLowestRating(List<App> apps) {
+    public static List<App> getLowestRating(List<App> apps) {
 
-        double idx = 5;
+        double idx = Double.MAX_VALUE;
         App lowest = new App();
 
         for (App app : apps) {
@@ -44,10 +52,17 @@ public class Evaluate {
             }
         }
 
-        return lowest;
+        List<App> lows = new ArrayList<>();
+        for (App app : apps) {
+            if (app.getRating().equals(lowest.getRating())) {
+                lows.add(app);
+            }
+        }
+
+        return lows;
     }
 
-    public static double getAverageRating(List<App> apps) {
+    public static double getTotalRating(List<App> apps) {
 
         double sum = 0;
 
@@ -57,7 +72,7 @@ public class Evaluate {
                 }
         }
 
-        return sum/apps.size();
+        return sum;
     }
 
     public static int getDiscarded(List<App> apps) {

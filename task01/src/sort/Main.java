@@ -21,23 +21,40 @@ public class Main {
         map = ReadFiles.getInfo(fileName);
 
         for (String str : map.keySet()) {
+
             List<App> apps = map.get(str);
-            App highest = Evaluate.getHighestRating(apps);
-            App lowest = Evaluate.getLowestRating(apps);
-            double average = Evaluate.getAverageRating(apps);
+
+            List<App> highs = Evaluate.getHighestRating(apps);
+            String highest = "";
+            for (App high : highs) {
+                highest += String.format("\t%s\n", high.getName());
+            }
+
+            List<App> lows = Evaluate.getLowestRating(apps);
+            String lowest = "";
+            for (App low : lows) {
+                lowest += String.format("\t%s\n", low.getName());
+            }
+
             int count = apps.size();
             int discarded = Evaluate.getDiscarded(apps);
+            double average = Evaluate.getTotalRating(apps)/(count - discarded);
+
             System.out.printf("""
                 Category: %s
-                    Highest: %s, %s
-                    Lowest: %s, %s
-                    Average: %.2f
                     Count: %d
-                    Discarded: %d\n
-                """, str.toUpperCase(), 
-                highest.getName(), highest.getRating(), 
-                lowest.getName(), lowest.getRating(),
-                average, count, discarded); 
+                    Discarded: %d
+                    Average rating: %.2f
+
+                    Highest rating: %s
+                %s
+                    Lowest rating: %s
+                %s\n
+                """, str.toUpperCase(),
+                count, discarded, average, 
+                highs.get(0).getRating(), highest,
+                lows.get(0).getRating(), lowest
+                ); 
         }
 
     }
