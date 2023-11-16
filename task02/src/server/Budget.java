@@ -20,7 +20,7 @@ public class Budget {
     }
 
     public static List<Item> useBudget() {
-        items = Client.getItems();
+        items = Main.getItems();
         Comparator<Item> comparator = Comparator.comparing(item -> item.getRating());
         comparator = comparator.thenComparing(Comparator.comparing(item -> item.getPrice()));
         comparator = comparator.reversed();

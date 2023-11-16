@@ -11,7 +11,7 @@ import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Client {
+public class Main {
 
     private static String SERVER;
     private static int PORT;
