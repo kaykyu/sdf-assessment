@@ -143,8 +143,8 @@ public class Main {
         System.out.println(line);
               
         if (line != null) {
-            bw.close();
-            br.close();
+            is.close();
+            os.close();
             socket.close();
         }
     }
