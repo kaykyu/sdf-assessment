@@ -6,6 +6,8 @@ import java.util.Map;
 
 public class Main {
 
+    private static int total = 0;
+
     private static Map<String, List<App>> map = new HashMap<>();
 
     public static void main(String[] args) {
@@ -37,6 +39,7 @@ public class Main {
             }
 
             int count = apps.size();
+            total += count;
             int discarded = Evaluate.getDiscarded(apps);
             double average = Evaluate.getTotalRating(apps)/(count - discarded);
 
@@ -55,6 +58,7 @@ public class Main {
                 lows.get(0).getRating(), lowest
                 ); 
         }
-
+        
+        System.out.printf("Total lines in file: %d\n", total);
     }
 }
