@@ -50,8 +50,7 @@ public class Main {
                 %s
                     Lowest rating: %s
                 %s\n
-                """, str.toUpperCase(),
-                count, discarded, average, 
+                """, str, count, discarded, average, 
                 highs.get(0).getRating(), highest,
                 lows.get(0).getRating(), lowest
                 ); 

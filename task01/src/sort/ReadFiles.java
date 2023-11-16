@@ -19,9 +19,9 @@ public class ReadFiles {
             BufferedReader br = new BufferedReader(fr);
             apps = br.lines()
                 .skip(1)
-                .map(lines -> lines.trim().toLowerCase().split(","))
+                .map(lines -> lines.trim().split(","))
                 .map(fields -> new App
-                    (fields[0], fields[1], fields[2]))
+                    (fields[0], fields[1].toUpperCase(), fields[2].toLowerCase()))
                 .collect(Collectors.groupingBy(app -> app.getCategory()));
 
         } catch (IOException e) {
